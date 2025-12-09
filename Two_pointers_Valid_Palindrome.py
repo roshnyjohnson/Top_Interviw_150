@@ -6,10 +6,11 @@ class Solution(object):
         """
         reverse=""
         s="".join(ch for ch in s if ch.isalnum()).lower()
-        for i in range(len(s)-1,-1,-1):
-            reverse=reverse+s[i]
-        if reverse==s:
-            return True
-        else:
-            return False
+        left,right=0,len(s)-1
+        while left<right:
+            if s[right]!=s[left]:
+                return False
+            right-=1
+            left+=1
+        return True
         
