@@ -1,21 +1,16 @@
 class Solution(object):
-    def romanToInt(self,s):
-        roman ={
-            "I":1,
-            "V":5,
-            "X":10,
-            "L":50,
-            "C":100,
-            "D":500,
-            "M":1000
+    def romanToInt(self, s):
+        roman = {
+            "I": 1, "V": 5, "X": 10, "L": 50,
+            "C": 100, "D": 500, "M": 1000
         }
-        sum=0
-        i=0
-        while i<len(s):
-            if  i<len(s)-1 and roman[s[i]]<roman[s[i+1]]:
-                sum+=roman[s[i+1]]-roman[s[i]]
-                i=i+2
+        
+        total = 0
+        for i in range(len(s)):
+            # If smaller before larger → subtract
+            if i + 1 < len(s) and roman[s[i]] < roman[s[i+1]]:
+                total -= roman[s[i]]
             else:
-                sum=sum+roman[s[i]]
-                i+=1
-        return sum
+                total += roman[s[i]]
+                
+        return total
